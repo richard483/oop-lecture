@@ -28,6 +28,7 @@ public class Main {
 			switch (input) {
 			case 1:
 				//input data baru
+				System.out.println("Hello Input!");
 				break;
 			case 2:
 				//view data
