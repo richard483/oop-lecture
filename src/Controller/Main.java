@@ -41,6 +41,9 @@ public class Main {
 			case 4:
 				//delete data
 				break;
+			case 5:
+				//search data				
+				break;
 			case 0:
 				System.out.println("Terima kasih, selamat kembali lagi!");
 				break;
@@ -85,9 +88,19 @@ public class Main {
 		System.out.println("2. View data");
 		System.out.println("3. Update data");
 		System.out.println("4. Delete data");
+		System.out.println("5. Search data");
 		System.out.println("0. Keluar dari aplikasi");
 		System.out.print("Masukkan pilihan kamu >>> ");
 
+	}
+	
+	public void printMenuDetail() {
+		System.out.println("1. Staff");
+		System.out.println("2. Customer");
+		System.out.println("3. Book");
+		System.out.println("4. Movie");
+		System.out.println("5. Exit");
+		System.out.print("Masukkan pilihan kamu >>> ");
 	}
 	
 	public static void main(String[] args) {
@@ -98,12 +111,7 @@ public class Main {
 	public void printMenuInputDataBaru() {
 		int inpNum;
 		do {
-			System.out.println("1. Staff");
-			System.out.println("2. Customer");
-			System.out.println("3. Book");
-			System.out.println("4. Movie");
-			System.out.println("5. Exit");
-			System.out.print("Masukkan pilihan kamu >>> ");
+			printMenuDetail();
 			inpNum = scanInt();
 			switch (inpNum) {
 			case 1:
