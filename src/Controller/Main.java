@@ -42,7 +42,8 @@ public class Main {
 				//delete data
 				break;
 			case 5:
-				//search data				
+				//search data	
+				searchMenu();
 				break;
 			case 0:
 				System.out.println("Terima kasih, selamat kembali lagi!");
@@ -298,4 +299,160 @@ public class Main {
 		Movie addMovieData = new Movie(inpitemID, inptitle, inpauthor, inpgenre, dateTemp, inpstudio);
 		movieList.add(addMovieData);
 	}
+	
+	public void searchMenu() {
+		int inpNum;
+		do {
+			printMenuDetail();
+			inpNum = scanInt();
+			switch (inpNum) {
+			case 1:
+				searchStaffData();
+				break;
+			case 2:
+				searchCustomerData();
+				break;
+			case 3:
+				searchBookData();
+				break;
+			case 4:
+				searchMovieData();
+				break;
+			default:
+				break;
+			}
+		} while (inpNum != 5);
+	}
+	
+	public void searchStaffData() {
+		if(staffList.isEmpty()) {
+			System.out.println("data staff masih kosong..");
+			System.out.println("Press Enter to continue");
+			scan.nextLine();
+		}else {
+			String staffSearch;
+			System.out.println("Masukan nama staff yang ingin dicari..");
+			System.out.print(">> ");
+			staffSearch = scan.nextLine();
+			boolean find = false;
+			int i = 1;
+			for (Staff staff : staffList) {
+				if(staff.getName().contains(staffSearch)) {
+					System.out.println(i++);
+					System.out.println("Staff ID: " + staff.getStaffID());
+					System.out.println("Staff Name: " + staff.getName());
+					System.out.println("Staff Email: " + staff.getEmailAddress());
+					System.out.println("Staff Phone: " + staff.getPhoneNumber());
+					System.out.println("Staff Gender: " + staff.getGender());
+					System.out.println("Staff Salary: " + staff.getSalary() + "\n");
+					find = true;
+					
+				}
+			}
+			if(find == false) {
+				System.out.println("data staff tidak ditemukan..");
+			}
+			System.out.println("Press Enter to continue");
+			scan.nextLine();
+
+		}
+	}
+	
+	public void searchCustomerData() {
+		if(customerList.isEmpty()) {
+			System.out.println("data customer masih kosong..");
+			System.out.println("Press Enter to continue");
+			scan.nextLine();
+		}else {
+			String customerSearch;
+			System.out.println("Masukan nama customer yang ingin dicari..");
+			System.out.print(">> ");
+			customerSearch = scan.nextLine();
+			boolean find = false;
+			int i = 1;
+			for (Customer customer : customerList) {
+				if(customer.getName().contains(customerSearch)) {
+					System.out.println(i++);
+					System.out.println("Customer ID: " + customer.getCustomerID());
+					System.out.println("Customer Name: " + customer.getName());
+					System.out.println("Customer Email: " + customer.getEmailAddress());
+					System.out.println("Customer Phone: " + customer.getPhoneNumber());
+					System.out.println("Customer Gender: " + customer.getGender() +"\n");
+					find = true;
+					
+				}
+			}
+			if(find == false) {
+				System.out.println("data customer tidak ditemukan..");
+			}
+			System.out.println("Press Enter to continue");
+			scan.nextLine();
+		}
+	}
+	
+	public void searchBookData() {
+		if (bookList.isEmpty()) {
+			System.out.println("data buku masih kosong..");
+			System.out.println("Press Enter to continue");
+			scan.nextLine();
+		} else {
+			String searchBuku;
+			System.out.println("Masukan judul buku atau karya penulis yang ingin dicari..");
+			System.out.print(">> ");
+			searchBuku = scan.nextLine();
+			boolean find = false;
+			int i = 1;
+			for (Book book : bookList) {
+				if(book.getAuthor().contains(searchBuku) || book.getTitle().contains(searchBuku)) {
+					System.out.println(i++);
+					System.out.println("Book ID: " + book.getItemID());
+					System.out.println("Book Title: " + book.getTitle());
+					System.out.println("Book ISBN: " + book.getIsbn());
+					System.out.println("Book Author: " + book.getAuthor());
+					System.out.println("Book Genre" + book.getGenre());
+					System.out.println("Book Publisher: " + book.getPublisher() + "\n");
+					find = true;
+				}
+			}
+			if(find == false) {
+				System.out.println("data buku tidak ditemukan..");
+			}
+			System.out.println("Press Enter to continue");
+			scan.nextLine();
+		}
+	}
+	
+	public void searchMovieData() {
+		if (movieList.isEmpty()) {
+			System.out.println("data film masih kosong..");
+			System.out.println("Press Enter to continue");
+			scan.nextLine();
+		} else {
+			String searchMovie;
+			System.out.println("Masukan judul film atau karya pencipta yang ingin dicari..");
+			System.out.print(">> ");
+			searchMovie = scan.nextLine();
+			boolean find = false;
+			int i = 1;
+			for (Movie movie: movieList) {
+				if(movie.getAuthor().contains(searchMovie) || movie.getTitle().contains(searchMovie)) {
+					System.out.println(i++);
+					System.out.println("Movie ID: " + movie.getItemID());
+					System.out.println("Movie Title: " + movie.getTitle());
+					System.out.println("Movie Author: " + movie.getAuthor());
+					System.out.println("Movie Genre" + movie.getGenre());
+					System.out.println("Movie Studio: " + movie.getStudio() + "\n");
+					find = true;
+				}
+			}
+			if(find == false) {
+				System.out.println("data film tidak ditemukan..");
+			}
+			System.out.println("Press Enter to continue");
+			scan.nextLine();
+		}
+	}
+	
+	
+	
 }
