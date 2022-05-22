@@ -1,5 +1,6 @@
 package Controller;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -34,6 +35,7 @@ public class Main {
 				break;
 			case 2:
 				//view data
+				displayData();
 				break;
 			case 3:
 				//update data
@@ -93,6 +95,17 @@ public class Main {
 		System.out.println("0. Keluar dari aplikasi");
 		System.out.print("Masukkan pilihan kamu >>> ");
 
+	}
+	
+	//Menu View
+	public void viewMenu() {
+		System.out.println("Pilih data yang akan ditampilkan!");
+		System.out.println("1. Book");
+		System.out.println("2. Customer");
+		System.out.println("3. Movie");
+		System.out.println("4. Staff");
+		System.out.println("0. Return to Main Menu");
+		System.out.println("Masukkan pilihan kamu >>> ");
 	}
 	
 	public void printMenuDetail() {
@@ -453,6 +466,91 @@ public class Main {
 		}
 	}
 	
+	//ViewData Function
+	public void displayData() {
+		Integer inp = 0;
+		DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+		
+		do {
+			viewMenu();
+			inp = scanInt();
+			System.out.println();
+			
+			switch(inp) {
+			//Book View
+			case 1:
+				if (bookList.isEmpty()) {
+					System.out.println("Data buku tidak ditemukan!");
+					System.out.println();
+					break;
+				}
+				System.out.println("==========================================================================================================================");
+				System.out.println("|    ID    |        Book Title        |       Author       |  Genre  |      Release Date      |    Publisher    |  ISBN  |");
+				System.out.println("==========================================================================================================================");
+				for (Book book : bookList) {
+					System.out.printf("| %-8s | %-24s | %-18s | %-7s | %-22s | %-15s | %-6s |\n", book.getItemID(), book.getTitle()
+							, book.getAuthor(), book.getGenre(), df.format(book.getReleaseDate()), book.getPublisher(), book.getIsbn());
+				}
+				System.out.println("==========================================================================================================================");
+				System.out.println();
+				break;
+					
+			//Customer View
+			case 2:
+				if (customerList.isEmpty()) {
+					System.out.println("There is no customer data!");
+					System.out.println();
+					break;
+				}
+				System.out.println("===========================================================================================");
+				System.out.println("|    ID    |        Name        |  Phone Number  |        Email Address        |  Gender  |");
+				System.out.println("===========================================================================================");
+				for (Customer customer : customerList) {
+					System.out.printf("| %-8s | %-18s | %-14s | %-27s | %-8s |\n", customer.getCustomerID(), customer.getName() 
+							, customer.getPhoneNumber(), customer.getEmailAddress(), customer.getGender());
+				}
+				System.out.println("===========================================================================================");
+				System.out.println();
+				break;
+					
+			//Movie view
+			case 3:
+				if(movieList.isEmpty()) {
+					System.out.println("There is no film data!");
+					System.out.println();
+					break;
+				}
+				System.out.println("=========================================================================================================");
+				System.out.println("|    ID    |        Movie Title        |       Author       |   Genre   |    Release Date    |  Studio  |");
+				System.out.println("=========================================================================================================");
+				for (Movie movie : movieList) {
+					System.out.printf("| %-8s | %-25s | %-18s | %-9s | %-18s | %-8s |\n", movie.getItemID(), movie.getTitle()
+							, movie.getAuthor(), movie.getGenre(), df.format(movie.getReleaseDate()), movie.getStudio());
+				}
+				System.out.println("=========================================================================================================");
+				System.out.println();
+				break;
+					
+			//Staff view
+			case 4:
+				if(staffList.isEmpty()) {
+					System.out.println("There is no staff listed!");
+					System.out.println();
+					break;
+				}
+				System.out.println("========================================================================================================");
+				System.out.println("|    ID    |        Name        |  Phone Number  |        Email Address        |  Gender  |   Salary   |");
+				System.out.println("========================================================================================================");
+				for (Staff staff : staffList) {
+					System.out.printf("| %-8s | %-18s | %-14s | %-27s | %-8s | %-10d |\n", staff.getStaffID(), staff.getName() 
+							, staff.getPhoneNumber(), staff.getEmailAddress(), staff.getGender(), staff.getSalary());
+				}
+				System.out.println("========================================================================================================");
+				System.out.println();
+				break;
+			}
+		}while(inp != 0);
+	}
 	
 	
 }
