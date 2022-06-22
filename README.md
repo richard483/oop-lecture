@@ -5,8 +5,12 @@ Project OOP Lecture
 ### Class Diagram:
 ![classDiagramPic](https://github.com/richard483/oop-lecture/blob/master/img/oop_classDiagram.png)
 
+<br/>
 
 ### Penjelasan Program
+
+Program ini merupakan program library sederhana yang berbasis CLI yang sudah dapat terhubung kedalam databse MySQL lokal.
+
 * Fitur yang berjalan:
     * Create, Read, Update, View untuk Staff, Customer, Movie, dan Book
     * Koneksi ke database MySQL secara lokal
